@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juru.DashboardController">
+    <top>
+        <MenuBar>
+            <Menu text="Students">
+                <MenuItem text="Add Student" onAction="#openAddStudent"/>
+                <MenuItem text="View Students" onAction="#openViewStudents"/>
+            </Menu>
+            <Menu text="Teachers">
+                <MenuItem text="Add Teacher" onAction="#openAddTeacher"/>
+                <MenuItem text="View Teachers" onAction="#openViewTeachers"/>
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

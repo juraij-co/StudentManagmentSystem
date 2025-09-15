@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.juru.SearchStudentController" alignment="CENTER" spacing="10">
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Student ID:"/>
+        <TextField fx:id="searchIdField"/>
+        <Button text="Search" onAction="#searchStudent"/>
+    </HBox>
+    <Label fx:id="resultLabel" text=""/>
+</VBox>

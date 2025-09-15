@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.ViewStudentsController" alignment="CENTER" spacing="10">
+    <TableView fx:id="studentTable">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="ageColumn" text="Age"/>
+            <TableColumn fx:id="courseColumn" text="Course"/>
+            <TableColumn fx:id="emailColumn" text="Email"/>
+        </columns>
+    </TableView>
+</VBox>
