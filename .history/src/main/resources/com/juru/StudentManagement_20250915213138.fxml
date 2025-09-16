@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.StudentController" spacing="10" style="-fx-padding: 20;">
+
+    <HBox spacing="10">
+        <Button text="Add Student" onAction="#openAddStudent" />
+        <TextField fx:id="searchField" promptText="Search by name..." />
+        <Button text="Search" onAction="#searchStudents" />
+    </HBox>
+
+    <TableView fx:id="studentsTable" prefHeight="400">
+        <columns>
+            <TableColumn text="ID" fx:id="colId" prefWidth="50" />
+            <TableColumn text="Name" fx:id="colName" prefWidth="150" />
+            <TableColumn text="Email" fx:id="colEmail" prefWidth="150" />
+            <TableColumn text="Course" fx:id="colCourse" prefWidth="100" />
+            <TableColumn text="Semester" fx:id="colSemester" prefWidth="100" />
+            <TableColumn text="Actions" fx:id="colActions" prefWidth="120" />
+        </columns>
+    </TableView>
+</VBox>

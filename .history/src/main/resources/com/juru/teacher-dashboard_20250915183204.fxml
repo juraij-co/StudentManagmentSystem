@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.juru.TeacherDashboardController">
+
+    <top>
+        <MenuBar>
+            <Menu text="Attendance">
+                <MenuItem text="Mark Attendance" onAction="#openMarkAttendance"/>
+                <MenuItem text="View Attendance" onAction="#openViewAttendance"/>
+            </Menu>
+            <Menu text="Marks">
+                <MenuItem text="Add Marks" onAction="#openAddMarks"/>
+                <MenuItem text="View Marks" onAction="#openViewMarks"/>
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

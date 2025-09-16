@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.juru.AdminDashboardController"
+            style="-fx-background-color: #f5f7fa;">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);" 
+              spacing="20" alignment="CENTER_LEFT" prefHeight="70">
+            <padding>
+                <Insets left="20" right="20" />
+            </padding>
+            
+            <!-- App Logo/Title -->
+            <Label text="EduManage" style="-fx-text-fill: #2193b0; -fx-font-size: 20px; -fx-font-weight: bold;" />
+            
+            <!-- Navigation Menu -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button text="Dashboard"  style="-fx-background-color: transparent; -fx-text-fill: #2193b0; -fx-font-weight: bold; -fx-underline: true;" />
+                <Button text="Students" onAction="#openViewStudents" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Teachers" onAction="#openViewTeachers" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Classes" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Attendance" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Reports" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <!-- User Section -->
+            <HBox spacing="10" alignment="CENTER">
+                <Circle radius="20" fill="linear-gradient(to bottom right, #2193b0, #6dd5ed)" />
+                <Label text="Admin User" style="-fx-text-fill: #333; -fx-font-weight: bold;" />
+                <Button text="Logout" onAction="#logout" style="-fx-background-color: #f0f0f0; -fx-text-fill: #555; -fx-background-radius: 4;" />
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            <!-- Welcome Section -->
+            <HBox alignment="CENTER_LEFT">
+                <VBox>
+                    <Label fx:id="welcomeLabel" text="Welcome Admin!" style="-fx-font-size: 24px; -fx-text-fill: #333; -fx-font-weight: bold;" />
+                    <Label text="Here's what's happening with your school today." style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+                </VBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="Monday, May 16, 2023" style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+            </HBox>
+
+            <!-- Stats Overview Cards -->
+            <GridPane hgap="15" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="25" />
+                    <ColumnConstraints percentWidth="25" />
+                </columnConstraints>
+                
+                <!-- Students Card -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);" 
+                      GridPane.columnIndex="0">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(33, 147, 176, 0.2)" />
+                        <Label text="1,254" style="-fx-font-size: 24px; -fx-text-fill: #2193b0; -fx-font-weight: bold;" />
+                    </HBox>
+                    <Label text="Total Students" style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-padding: 5 0 0 0;" />
+                </VBox>
+                
+                <!-- Teachers Card -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);" 
+                      GridPane.columnIndex="1">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(76, 175, 80, 0.2)" />
+                        <Label text="64" style="-fx-font-size: 24px; -fx-text-fill: #4CAF50; -fx-font-weight: bold;" />
+                    </HBox>
+                    <Label text="Total Teachers" style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-padding: 5 0 0 0;" />
+                </VBox>
+                
+                <!-- Classes Card -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);" 
+                      GridPane.columnIndex="2">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(255, 152, 0, 0.2)" />
+                        <Label text="42" style="-fx-font-size: 24px; -fx-text-fill: #FF9800; -fx-font-weight: bold;" />
+                    </HBox>
+                    <Label text="Active Classes" style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-padding: 5 0 0 0;" />
+                </VBox>
+                
+                <!-- Attendance Card -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);" 
+                      GridPane.columnIndex="3">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(156, 39, 176, 0.2)" />
+                        <Label text="94%" style="-fx-font-size: 24px; -fx-text-fill: #9C27B0; -fx-font-weight: bold;" />
+                    </HBox>
+                    <Label text="Today's Attendance" style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-padding: 5 0 0 0;" />
+                </VBox>
+            </GridPane>
+
+            <!-- Main Content Area (Two Columns) -->
+            <HBox spacing="15">
+                <!-- Left Column (2/3 width) -->
+                <VBox spacing="15" prefWidth="650">
+                    <!-- Recent Activities -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+                        <Label text="Recent Activities" style="-fx-font-size: 18px; -fx-text-fill: #333; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+                        
+                        <VBox spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Circle radius="5" fill="#2193b0" />
+                                <Label text="New student registration - John Doe" style="-fx-text-fill: #666;" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label text="2 hours ago" style="-fx-text-fill: #999; -fx-font-size: 12px;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Circle radius="5" fill="#4CAF50" />
+                                <Label text="Assignment submitted - Mathematics Class" style="-fx-text-fill: #666;" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label text="5 hours ago" style="-fx-text-fill: #999; -fx-font-size: 12px;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Circle radius="5" fill="#FF9800" />
+                                <Label text="Teacher added - Mrs. Smith (Science)" style="-fx-text-fill: #666;" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label text="Yesterday" style="-fx-text-fill: #999; -fx-font-size: 12px;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <Circle radius="5" fill="#9C27B0" />
+                                <Label text="Parent meeting scheduled for Friday" style="-fx-text-fill: #666;" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label text="2 days ago" style="-fx-text-fill: #999; -fx-font-size: 12px;" />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Quick Actions -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+                        <Label text="Quick Actions" style="-fx-font-size: 18px; -fx-text-fill: #333; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+                        
+                        <GridPane hgap="10" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints percentWidth="50" />
+                                <ColumnConstraints percentWidth="50" />
+                            </columnConstraints>
+                            
+                            <Button text="Add Student" onAction="#openAddStudent" style="-fx-background-color: #2193b0; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 10;" GridPane.columnIndex="0" />
+                            <Button text="View Students" onAction="#openViewStudents" style="-fx-background-color: #f0f0f0; -fx-text-fill: #333; -fx-background-radius: 4; -fx-padding: 10;" GridPane.columnIndex="1" />
+                            <Button text="Add Teacher" onAction="#openAddTeacher" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 10;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Button text="View Teachers" onAction="#openViewTeachers" style="-fx-background-color: #f0f0f0; -fx-text-fill: #333; -fx-background-radius: 4; -fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        </GridPane>
+                    </VBox>
+                </VBox>
+                
+                <!-- Right Column (1/3 width) -->
+                <VBox spacing="15" prefWidth="350">
+                    <!-- Upcoming Events -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+                        <Label text="Upcoming Events" style="-fx-font-size: 18px; -fx-text-fill: #333; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+                        
+                        <VBox spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox alignment="CENTER" style="-fx-background-color: #2193b0; -fx-background-radius: 6; -fx-padding: 5; -fx-min-width: 40;">
+                                    <Label text="18" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                                    <Label text="MAY" style="-fx-text-fill: white; -fx-font-size: 10px;" />
+                                </VBox>
+                                <Label text="Annual Sports Day" style="-fx-text-fill: #333;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox alignment="CENTER" style="-fx-background-color: #4CAF50; -fx-background-radius: 6; -fx-padding: 5; -fx-min-width: 40;">
+                                    <Label text="22" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                                    <Label text="MAY" style="-fx-text-fill: white; -fx-font-size: 10px;" />
+                                </VBox>
+                                <Label text="Parent-Teacher Meeting" style="-fx-text-fill: #333;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox alignment="CENTER" style="-fx-background-color: #FF9800; -fx-background-radius: 6; -fx-padding: 5; -fx-min-width: 40;">
+                                    <Label text="28" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+                                    <Label text="MAY" style="-fx-text-fill: white; -fx-font-size: 10px;" />
+                                </VBox>
+                                <Label text="Science Fair" style="-fx-text-fill: #333;" />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Statistics Chart (Placeholder) -->
+                    <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+                        <Label text="Attendance Overview" style="-fx-font-size: 18px; -fx-text-fill: #333; -fx-font-weight: bold; -fx-padding: 0 0 15 0;" />
+                        
+                        <!-- Simple bar chart representation -->
+                        <VBox spacing="5">
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Mon" prefWidth="40" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                                <Rectangle width="120" height="10" fill="#2193b0" arcWidth="5" arcHeight="5" />
+                                <Label text="92%" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-padding: 0 0 0 5;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Tue" prefWidth="40" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                                <Rectangle width="140" height="10" fill="#4CAF50" arcWidth="5" arcHeight="5" />
+                                <Label text="96%" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-padding: 0 0 0 5;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Wed" prefWidth="40" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                                <Rectangle width="130" height="10" fill="#2193b0" arcWidth="5" arcHeight="5" />
+                                <Label text="94%" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-padding: 0 0 0 5;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Thu" prefWidth="40" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                                <Rectangle width="120" height="10" fill="#2193b0" arcWidth="5" arcHeight="5" />
+                                <Label text="92%" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-padding: 0 0 0 5;" />
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT">
+                                <Label text="Fri" prefWidth="40" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                                <Rectangle width="110" height="10" fill="#FF9800" arcWidth="5" arcHeight="5" />
+                                <Label text="88%" style="-fx-text-fill: #666; -fx-font-size: 12px; -fx-padding: 0 0 0 5;" />
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

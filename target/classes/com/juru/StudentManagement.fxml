@@ -1,0 +1,19 @@
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.StudentController">
+    <HBox spacing="10">
+        <Button text="Back" onAction="#goBack"/>
+        <Button text="Add Student" onAction="#openAddStudentForm"/>
+        <TextField fx:id="searchField" promptText="Search by name..."/>
+        <Button text="Search" onAction="#searchStudent"/>
+    </HBox>
+
+    <TableView fx:id="studentTable" prefHeight="400">
+        <columns>
+            <TableColumn text="ID" fx:id="colId" prefWidth="50"/>
+            <TableColumn text="Name" fx:id="colName" prefWidth="150"/>
+            <TableColumn text="Email" fx:id="colEmail" prefWidth="150"/>
+            <TableColumn text="Course" fx:id="colCourse" prefWidth="100"/>
+            <TableColumn text="Semester" fx:id="colSemester" prefWidth="100"/>
+            <TableColumn text="Actions" fx:id="colActions" prefWidth="120"/>
+        </columns>
+    </TableView>
+</VBox>

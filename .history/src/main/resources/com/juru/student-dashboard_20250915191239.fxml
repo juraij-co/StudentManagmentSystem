@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.juru.StudentDashboardController">
+
+    <top>
+        <MenuBar>
+            <Menu text="Attendance">
+                <MenuItem text="View Attendance" onAction="#openViewAttendance"/>
+            </Menu>
+            <Menu text="Marks">
+                <MenuItem text="View Marks" onAction="#openViewMarks"/>
+            </Menu>
+            <Menu text="Logout">
+                <MenuItem text="Logout" onAction="#logout"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <center>
+        <Label fx:id="welcomeLabel" text="Welcome Student!" style="-fx-font-size: 18px; -fx-padding: 20;"/>
+    </center>
+
+</BorderPane>
