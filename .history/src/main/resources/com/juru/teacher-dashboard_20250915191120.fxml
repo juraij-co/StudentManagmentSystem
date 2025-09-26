@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.TeacherDashboardController"
-      alignment="CENTER" spacing="20">
-    <Label fx:id="welcomeLabel" text="Loading Teacher Dashboard..."/>
-</VBox>

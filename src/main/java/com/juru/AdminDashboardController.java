@@ -1,67 +1,108 @@
 package com.juru;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import java.io.IOException;
+import javafx.scene.layout.StackPane;
+import javafx.scene.Node;
 
 public class AdminDashboardController {
 
     @FXML
-    private BorderPane rootPane;
+    private StackPane contentArea;
 
     @FXML
-    private Label welcomeLabel;
-
-    @FXML
-    private void initialize() {
-        // Optionally, load default dashboard content in center
-        loadDashboardContent();
+    public void initialize() {
+        // Load default dashboard view
+        openDashboard();
     }
 
-    private void loadDashboardContent() {
+    @FXML
+    private void openDashboard() {
+        setContent("/com/juru/AdminDashboardHome.fxml");
+    }
+
+   @FXML
+private void openStudents() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/StudentManagement.fxml"));
+        Node node = loader.load();
+
+        StudentsController studentsController = loader.getController();
+        studentsController.setParentController(this);
+
+        contentArea.getChildren().setAll(node);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+
+    @FXML
+    private void openTeachers() {
+        setContent("/com/juru/TeachersView.fxml");
+    }
+
+    @FXML
+    private void openClasses() {
+        setContent("/com/juru/ClassesView.fxml");
+    }
+
+    @FXML
+    private void openAttendance() {
+        setContent("/com/juru/AttendanceView.fxml");
+    }
+
+    @FXML
+    private void openReports() {
+        setContent("/com/juru/ReportsView.fxml");
+    }
+
+    @FXML
+    private void logout() {
+        System.out.println("Logout clicked!");
+        // TODO: navigate back to login.fxml
+    }
+
+    private void setContent(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/DashboardContent.fxml"));
-            Parent dashboardContent = loader.load();
-            rootPane.setCenter(dashboardContent);
+            java.net.URL res = getClass().getResource(fxmlPath);
+            if (res == null) {
+                System.err.println("FXML resource not found: " + fxmlPath);
+                return;
+            }
+            Node node = FXMLLoader.load(res);
+            contentArea.getChildren().setAll(node);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    private void openStudents(ActionEvent event) {
+    public void loadDashboard() {
+    openDashboard();
+}
+
+    /**
+     * Public helper to load a view by file name from the /com/juru resources.
+     * Child controllers can call this to request navigation.
+     */
+    public void loadView(String fxmlName) {
+        String path = "/com/juru/" + fxmlName;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/StudentManagement.fxml"));
-            Parent studentContent = loader.load();
-
-            // Pass rootPane to StudentController for back navigation
-            StudentController controller = loader.getController();
-            controller.setRootPane(rootPane);
-
-            rootPane.setCenter(studentContent);
+            java.net.URL res = getClass().getResource(path);
+            if (res == null) {
+                System.err.println("FXML resource not found: " + path);
+                return;
+            }
+            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(res);
+            Node node = loader.load();
+            Object controller = loader.getController();
+            if (controller instanceof StudentsController) {
+                ((StudentsController) controller).setParentController(this);
+            }
+            contentArea.getChildren().setAll(node);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML
-    private void logout(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/Login.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Login - EduManage");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

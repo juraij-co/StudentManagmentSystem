@@ -24,12 +24,14 @@ CREATE TABLE semesters (
     FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
--- 4. Subjects
+-- 4. Subjects (added course_id)
 CREATE TABLE subjects (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     semester_id INT NOT NULL,
-    FOREIGN KEY (semester_id) REFERENCES semesters(id) ON DELETE CASCADE
+    course_id INT NOT NULL,
+    FOREIGN KEY (semester_id) REFERENCES semesters(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
 -- 5. Teachers

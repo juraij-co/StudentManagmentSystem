@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" style="-fx-padding: 20; -fx-background-color: #f5f7fa;">
+    <Label text="Attendance Management System" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 10 0;" />
+
+    <!-- Filter Section -->
+    <VBox spacing="10" style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Filter Attendance Records" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Date Range:" style="-fx-font-weight: bold; -fx-min-width: 80;" />
+            <DatePicker fx:id="startDatePicker" promptText="Start Date" style="-fx-pref-width: 150;" />
+            <Label text="to" style="-fx-font-weight: bold; -fx-padding: 0 5;" />
+            <DatePicker fx:id="endDatePicker" promptText="End Date" style="-fx-pref-width: 150;" />
+            
+            <Label text="Department:" style="-fx-font-weight: bold; -fx-min-width: 80; -fx-padding: 0 0 0 10;" />
+            <ComboBox fx:id="departmentFilter" promptText="All Departments" style="-fx-pref-width: 150;" />
+            
+            <Label text="Course:" style="-fx-font-weight: bold; -fx-min-width: 60; -fx-padding: 0 0 0 10;" />
+            <ComboBox fx:id="courseFilter" promptText="All Courses" style="-fx-pref-width: 150;" />
+        </HBox>
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Semester:" style="-fx-font-weight: bold; -fx-min-width: 80;" />
+            <ComboBox fx:id="semesterFilter" promptText="All Semesters" style="-fx-pref-width: 150;" />
+            
+            <Label text="Subject:" style="-fx-font-weight: bold; -fx-min-width: 80; -fx-padding: 0 0 0 10;" />
+            <ComboBox fx:id="subjectFilter" promptText="All Subjects" style="-fx-pref-width: 150;" />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Apply Filters" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+            <Button text="Clear Filters" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+        </HBox>
+    </VBox>
+
+    <!-- Statistics Overview -->
+    <HBox spacing="15" alignment="CENTER">
+        <VBox alignment="CENTER" style="-fx-background-color: #3498db; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 180;">
+            <Label text="85%" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="Overall Attendance" style="-fx-text-fill: white; -fx-font-size: 12px;" />
+        </VBox>
+        
+        <VBox alignment="CENTER" style="-fx-background-color: #2ecc71; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 180;">
+            <Label text="92%" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="This Month" style="-fx-text-fill: white; -fx-font-size: 12px;" />
+        </VBox>
+        
+        <VBox alignment="CENTER" style="-fx-background-color: #e74c3c; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 180;">
+            <Label text="37" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="Low Attendance Alerts" style="-fx-text-fill: white; -fx-font-size: 12px; -fx-text-alignment: center;" />
+        </VBox>
+        
+        <VBox alignment="CENTER" style="-fx-background-color: #f39c12; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 180;">
+            <Label text="15" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="Pending Regularizations" style="-fx-text-fill: white; -fx-font-size: 12px; -fx-text-alignment: center;" />
+        </VBox>
+    </HBox>
+
+    <!-- Attendance Table -->
+    <TableView fx:id="attendanceTable" prefHeight="300" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <columns>
+            <TableColumn text="Date" fx:id="dateColumn" prefWidth="100" />
+            <TableColumn text="Student ID" fx:id="studentIdColumn" prefWidth="80" />
+            <TableColumn text="Student Name" fx:id="studentNameColumn" prefWidth="150" />
+            <TableColumn text="Department" fx:id="deptColumn" prefWidth="120" />
+            <TableColumn text="Course" fx:id="courseColumn" prefWidth="120" />
+            <TableColumn text="Subject" fx:id="subjectColumn" prefWidth="150" />
+            <TableColumn text="Status" fx:id="statusColumn" prefWidth="80" />
+            <TableColumn text="Time" fx:id="timeColumn" prefWidth="80" />
+            <TableColumn text="Actions" fx:id="actionsColumn" prefWidth="120" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Export to Excel" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 15;" />
+        <Button text="Generate Report" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 15;" />
+        <Button text="Email Alerts" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 15;" />
+    </HBox>
+
+    <!-- Charts Section -->
+    <HBox spacing="15">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 400; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="Attendance by Department" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;" />
+            <BarChart fx:id="deptAttendanceChart">
+                <xAxis>
+                    <CategoryAxis label="Department" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Attendance %" upperBound="100" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+        
+        <VBox style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 15; -fx-pref-width: 400; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <Label text="Monthly Trend" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;" />
+            <LineChart fx:id="monthlyTrendChart">
+                <xAxis>
+                    <CategoryAxis label="Month" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Attendance %" upperBound="100" />
+                </yAxis>
+            </LineChart>
+        </VBox>
+    </HBox>
+
+    <!-- Status Bar -->
+    <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Label text="Last Updated: Today, 10:30 AM | Total Records: 1,245" style="-fx-text-fill: #7f8c8d; -fx-font-style: italic;" />
+    </HBox>
+</VBox>
