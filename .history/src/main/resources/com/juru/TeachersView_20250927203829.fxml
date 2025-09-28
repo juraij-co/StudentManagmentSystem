@@ -1,0 +1,147 @@
+public class TeachersController {
+    // Existing fields...
+    
+    @FXML
+    private void showAddTeacherDialog() {
+        try {
+            // Load the dialog FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/teacher-dialog.fxml"));
+            loader.setController(this);
+            DialogPane dialogPane = loader.load();
+            
+            // Reset form fields
+            resetTeacherForm();
+            dialogTitle.setText("Add New Teacher");
+            
+            // Create dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle("Teacher Management");
+            
+            // Set the result converter
+            dialog.setResultConverter(buttonType -> {
+                if (buttonType == ButtonType.APPLY) {
+                    saveTeacher();
+                }
+                return null;
+            });
+            
+            // Show dialog and wait for response
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.APPLY) {
+                // Teacher saved successfully
+                statusLabel.setText("Teacher added successfully!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            statusLabel.setText("Error loading teacher form!");
+        }
+    }
+    
+    @FXML
+    private void showEditTeacherDialog(Teacher teacher) {
+        try {
+            // Load the dialog FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/juru/teacher-dialog.fxml"));
+            loader.setController(this);
+            DialogPane dialogPane = loader.load();
+            
+            // Populate form with teacher data
+            populateTeacherForm(teacher);
+            dialogTitle.setText("Edit Teacher");
+            
+            // Create dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle("Edit Teacher");
+            
+            // Set the result converter
+            dialog.setResultConverter(buttonType -> {
+                if (buttonType == ButtonType.APPLY) {
+                    updateTeacher(teacher.getId());
+                }
+                return null;
+            });
+            
+            // Show dialog and wait for response
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.APPLY) {
+                statusLabel.setText("Teacher updated successfully!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            statusLabel.setText("Error loading teacher form!");
+        }
+    }
+    
+    // Initialize table with action buttons
+    @FXML
+    private void initialize() {
+        setupTableActions();
+        // Other initialization code...
+    }
+    
+    private void setupTableActions() {
+        colActions.setCellFactory(param -> new TableCell<Teacher, Void>() {
+            private final Button editBtn = new Button("Edit");
+            private final Button deleteBtn = new Button("Delete");
+            private final HBox pane = new HBox(editBtn, deleteBtn);
+            
+            {
+                // Style buttons
+                editBtn.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 5 10;");
+                deleteBtn.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 5 10;");
+                pane.setSpacing(5);
+                
+                // Set button actions
+                editBtn.setOnAction(event -> {
+                    Teacher teacher = getTableView().getItems().get(getIndex());
+                    showEditTeacherDialog(teacher);
+                });
+                
+                deleteBtn.setOnAction(event -> {
+                    Teacher teacher = getTableView().getItems().get(getIndex());
+                    deleteTeacher(teacher);
+                });
+            }
+            
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : pane);
+            }
+        });
+    }
+    
+    // Other existing methods...
+    private void resetTeacherForm() {
+        teacherName.clear();
+        teacherUsername.clear();
+        teacherEmail.clear();
+        teacherDepartment.getSelectionModel().clearSelection();
+        assignedCourses.getItems().clear();
+        assignedSemesters.getItems().clear();
+    }
+    
+    private void populateTeacherForm(Teacher teacher) {
+        teacherName.setText(teacher.getName());
+        teacherUsername.setText(teacher.getUsername());
+        teacherEmail.setText(teacher.getEmail());
+        // Set other fields accordingly
+    }
+    
+    @FXML
+    private void deleteTeacher(Teacher teacher) {
+        // Show confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Teacher");
+        alert.setHeaderText("Delete Teacher: " + teacher.getName());
+        alert.setContentText("Are you sure you want to delete this teacher? This action cannot be undone.");
+        
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Delete teacher logic
+            statusLabel.setText("Teacher deleted successfully!");
+        }
+    }
+}

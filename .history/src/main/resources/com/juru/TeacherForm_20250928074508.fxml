@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.TeacherViewController"
+      spacing="15" style="-fx-padding: 20; -fx-background-color: #ecf0f1;">
+
+    <Label text="Add New Teacher"
+           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30" />
+            <ColumnConstraints percentWidth="70" />
+        </columnConstraints>
+
+        <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="teacherName" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+        <Label text="Username:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField fx:id="teacherUsername" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+        <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <PasswordField fx:id="teacherPassword" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+        <Label text="Department:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <ComboBox fx:id="teacherDepartment" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+        <!-- Courses Section -->
+        <Label text="Assigned Courses:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <VBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="5">
+            <HBox spacing="5">
+                <ComboBox fx:id="availableCourses" style="-fx-pref-width: 200;" />
+                <Button text="Add" onAction="#addCourse" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+            </HBox>
+            <ListView fx:id="assignedCourses" style="-fx-pref-height: 100;" />
+            <Button text="Remove Selected Course" onAction="#removeCourse"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+        </VBox>
+
+        <!-- Semesters Section -->
+        <Label text="Assigned Semesters:" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+        <VBox GridPane.rowIndex="5" GridPane.columnIndex="1" spacing="5">
+            <HBox spacing="5">
+                <ComboBox fx:id="availableSemesters" style="-fx-pref-width: 200;" />
+                <Button text="Add" onAction="#addSemester" style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+            </HBox>
+            <ListView fx:id="assignedSemesters" style="-fx-pref-height: 80;" />
+            <Button text="Remove Selected Semester" onAction="#removeSemester"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+        </VBox>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#cancel" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" />
+        <Button text="Save Teacher" onAction="#saveTeacher" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+    </HBox>
+
+</VBox>
