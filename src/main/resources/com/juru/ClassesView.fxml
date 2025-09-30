@@ -7,7 +7,7 @@
 <VBox spacing="15" xmlns:fx="http://javafx.com/fxml" 
  fx:controller="com.juru.ClassesViewController"
 style="-fx-padding: 20; -fx-background-color: #f5f7fa;">
-    <Label text="Admin - Academic Management System" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 10 0;" />
+
 
     <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
 
@@ -122,7 +122,15 @@ style="-fx-padding: 20; -fx-background-color: #f5f7fa;">
             </VBox>
         </Tab>
 
+        <!-- Timetable Tab -->
+<Tab fx:id="timetableTab" text="Timetable">
+        <!-- Content will be loaded from Timetable.fxml in controller -->
+    </Tab>
+
+
     </TabPane>
+
+    
     
     <!-- Global Status Bar -->
     <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">

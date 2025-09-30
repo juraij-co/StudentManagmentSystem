@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.StudentsController" style="-fx-padding: 20; -fx-background-color: #f5f7fa;">
+    <Label text="Student Management System" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 10 0;" />
+
+    <!-- Action buttons and search section -->
+    <HBox spacing="10" style="-fx-padding: 0 0 15 0;">
+        <Button text="Back" onAction="#goBack" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+        <Button text="Add Student" onAction="#openAddStudentForm" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+        <Region HBox.hgrow="ALWAYS" />
+        <TextField fx:id="searchField" promptText="Search by name..." style="-fx-pref-width: 250;" />
+        <Button text="Search" onAction="#searchStudent" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+    </HBox>
+
+    <!-- Filter section -->
+    <VBox spacing="10" style="-fx-background-color: #ecf0f1; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Filter Students" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+        
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Course:" style="-fx-font-weight: bold; -fx-min-width: 80;" />
+            <ComboBox fx:id="courseFilter" promptText="All Courses" style="-fx-pref-width: 150;" />
+            
+            <Label text="Department:" style="-fx-font-weight: bold; -fx-min-width: 80; -fx-padding: 0 0 0 10;" />
+            <ComboBox fx:id="departmentFilter" promptText="All Departments" style="-fx-pref-width: 150;" />
+            
+            <Label text="Semester:" style="-fx-font-weight: bold; -fx-min-width: 80; -fx-padding: 0 0 0 10;" />
+            <ComboBox fx:id="semesterFilter" promptText="All Semesters" style="-fx-pref-width: 150;" />
+            
+            <Button text="Apply Filters" onAction="#applyFilters" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+            <Button text="Clear Filters" onAction="#clearFilters" style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+        </HBox>
+    </VBox>
+
+    <!-- Student table -->
+    <TableView fx:id="studentTable" prefHeight="400" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <columns>
+            <TableColumn text="ID" fx:id="colId" prefWidth="60" />
+            <TableColumn text="Name" fx:id="colName" prefWidth="150" />
+            <TableColumn text="Email" fx:id="colEmail" prefWidth="200" />
+            <TableColumn text="Course" fx:id="colCourse" prefWidth="120" />
+            <TableColumn text="Department" fx:id="colDepartment" prefWidth="150" />
+            <TableColumn text="Semester" fx:id="colSemester" prefWidth="80" />
+            <TableColumn text="Actions" fx:id="colActions" prefWidth="150" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+    
+    <!-- Status bar -->
+    <HBox alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Label fx:id="statusLabel" text="Ready" style="-fx-text-fill: #7f8c8d; -fx-font-style: italic;" />
+    </HBox>
+</VBox>

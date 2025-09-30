@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="25" xmlns:fx="http://javafx.com/fxml"
+      style="-fx-background-color: #f8f9fa;">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <!-- Header Section -->
+    <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 10 0;">
+        <VBox spacing="5">
+            <Label fx:id="welcomeLabel"
+                   text="Welcome Back, Admin!"
+                   style="-fx-font-size: 28px; -fx-text-fill: #343a40; -fx-font-weight: bold;" />
+            <Label text="Here's an overview of your institution's performance"
+                   style="-fx-text-fill: #6c757d; -fx-font-size: 14px;" />
+        </VBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <VBox alignment="CENTER_RIGHT" spacing="5">
+            <Label fx:id="dateLabel" text="Monday, May 16, 2023"
+                   style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: bold;" />
+            <Label fx:id="timeLabel" text="10:30 AM"
+                   style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+        </VBox>
+    </HBox>
+
+    <!-- Quick Stats Cards -->
+    <GridPane hgap="20" vgap="20">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="20"/>
+            <ColumnConstraints percentWidth="20"/>
+            <ColumnConstraints percentWidth="20"/>
+            <ColumnConstraints percentWidth="20"/>
+            <ColumnConstraints percentWidth="20"/>
+        </columnConstraints>
+
+        <!-- Students Card -->
+        <VBox GridPane.columnIndex="0" spacing="10"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-cursor: hand;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane style="-fx-background-color: #e3f2fd; -fx-background-radius: 10;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="👨‍🎓" style="-fx-font-size: 18px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label text="1,254" style="-fx-font-size: 24px; -fx-text-fill: #1976d2; -fx-font-weight: bold;" />
+                    <Label text="Total Students" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+            <Label text="↗ 12% from last month" style="-fx-text-fill: #4caf50; -fx-font-size: 11px; -fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Teachers Card -->
+        <VBox GridPane.columnIndex="1" spacing="10"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-cursor: hand;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane style="-fx-background-color: #e8f5e8; -fx-background-radius: 10;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="👨‍🏫" style="-fx-font-size: 18px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label text="64" style="-fx-font-size: 24px; -fx-text-fill: #2e7d32; -fx-font-weight: bold;" />
+                    <Label text="Total Teachers" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+            <Label text="↗ 3 new this month" style="-fx-text-fill: #4caf50; -fx-font-size: 11px; -fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Courses Card -->
+        <VBox GridPane.columnIndex="2" spacing="10"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-cursor: hand;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane style="-fx-background-color: #fff3e0; -fx-background-radius: 10;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="📚" style="-fx-font-size: 18px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label text="42" style="-fx-font-size: 24px; -fx-text-fill: #ef6c00; -fx-font-weight: bold;" />
+                    <Label text="Active Courses" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+            <Label text="8 courses ongoing" style="-fx-text-fill: #666; -fx-font-size: 11px; -fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Attendance Card -->
+        <VBox GridPane.columnIndex="3" spacing="10"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-cursor: hand;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane style="-fx-background-color: #f3e5f5; -fx-background-radius: 10;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="📊" style="-fx-font-size: 18px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label text="94%" style="-fx-font-size: 24px; -fx-text-fill: #7b1fa2; -fx-font-weight: bold;" />
+                    <Label text="Today's Attendance" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+            <Label text="1,178 students present" style="-fx-text-fill: #666; -fx-font-size: 11px; -fx-font-weight: bold;" />
+        </VBox>
+
+        <!-- Departments Card -->
+        <VBox GridPane.columnIndex="4" spacing="10"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-cursor: hand;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <StackPane style="-fx-background-color: #e0f2f1; -fx-background-radius: 10;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="🏛️" style="-fx-font-size: 18px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label text="12" style="-fx-font-size: 24px; -fx-text-fill: #00796b; -fx-font-weight: bold;" />
+                    <Label text="Departments" style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+            <Label text="All departments active" style="-fx-text-fill: #4caf50; -fx-font-size: 11px; -fx-font-weight: bold;" />
+        </VBox>
+    </GridPane>
+
+  <!-- Quick Actions & Recent Activity Section -->
+<HBox spacing="25">
+    <!-- Quick Actions -->
+    <VBox spacing="20" style="-fx-pref-width: 400;">
+        <Label text="Quick Actions" style="-fx-font-size: 20px; -fx-text-fill: #343a40; -fx-font-weight: bold; -fx-padding: 0 0 5 0;" />
+        <Label text="Frequently used administrative tasks" style="-fx-text-fill: #6c757d; -fx-font-size: 13px;" />
+        
+        <VBox spacing="12">
+            <!-- Student Management -->
+            <HBox spacing="15" alignment="CENTER_LEFT" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2); -fx-cursor: hand;">
+                <StackPane style="-fx-background-color: #e3f2fd; -fx-background-radius: 8;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="👨‍🎓" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+                    <Label text="Manage Students" style="-fx-text-fill: #343a40; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Add, edit, or view student records" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+                <Label text="→" style="-fx-text-fill: #2196f3; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            </HBox>
+            
+            <!-- Teacher Management -->
+            <HBox spacing="15" alignment="CENTER_LEFT" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2); -fx-cursor: hand;">
+                <StackPane style="-fx-background-color: #e8f5e8; -fx-background-radius: 8;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="👨‍🏫" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+                    <Label text="Manage Teachers" style="-fx-text-fill: #343a40; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Handle teacher assignments and profiles" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+                <Label text="→" style="-fx-text-fill: #4caf50; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            </HBox>
+            
+            <!-- Course Setup -->
+            <HBox spacing="15" alignment="CENTER_LEFT" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2); -fx-cursor: hand;">
+                <StackPane style="-fx-background-color: #fff3e0; -fx-background-radius: 8;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="📚" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+                    <Label text="Course Setup" style="-fx-text-fill: #343a40; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Create and manage academic courses" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+                <Label text="→" style="-fx-text-fill: #ff9800; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            </HBox>
+            
+            <!-- Attendance -->
+            <HBox spacing="15" alignment="CENTER_LEFT" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2); -fx-cursor: hand;">
+                <StackPane style="-fx-background-color: #f3e5f5; -fx-background-radius: 8;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="📊" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+                    <Label text="Attendance" style="-fx-text-fill: #343a40; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Track and manage student attendance" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+                <Label text="→" style="-fx-text-fill: #9c27b0; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            </HBox>
+            
+            <!-- Reports -->
+            <HBox spacing="15" alignment="CENTER_LEFT" 
+                  style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2); -fx-cursor: hand;">
+                <StackPane style="-fx-background-color: #eceff1; -fx-background-radius: 8;" >
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="📈" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+                    <Label text="Reports &amp; Analytics" style="-fx-text-fill: #343a40; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Label text="Generate performance reports" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+                <Label text="→" style="-fx-text-fill: #607d8b; -fx-font-size: 16px; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+    </VBox>
+
+</HBox>
+</VBox>

@@ -1,4 +1,5 @@
 D:\juraij\Java Project\std\src\main\java\com\juru\AddStudentController.java
+D:\juraij\Java Project\std\src\main\java\com\juru\AddStudentFormController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\AddTeacherController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\AdminDashboardController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\App.java
@@ -9,6 +10,7 @@ D:\juraij\Java Project\std\src\main\java\com\juru\database\DBConnection.java
 D:\juraij\Java Project\std\src\main\java\com\juru\DBConnection.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Department.java
 D:\juraij\Java Project\std\src\main\java\com\juru\LoginController.java
+D:\juraij\Java Project\std\src\main\java\com\juru\SceneLoader.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Semester.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Student.java
 D:\juraij\Java Project\std\src\main\java\com\juru\StudentController.java
@@ -18,8 +20,8 @@ D:\juraij\Java Project\std\src\main\java\com\juru\Subject.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Teacher.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeacherDAO.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeacherDashboardController.java
+D:\juraij\Java Project\std\src\main\java\com\juru\TeacherFormController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeachersController.java
-D:\juraij\Java Project\std\src\main\java\com\juru\TeachersViewController.java
-D:\juraij\Java Project\std\src\main\java\com\juru\TeacherViewController.java
+D:\juraij\Java Project\std\src\main\java\com\juru\TimetableController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\ViewTeachersController.java
 D:\juraij\Java Project\std\src\main\java\module-info.java

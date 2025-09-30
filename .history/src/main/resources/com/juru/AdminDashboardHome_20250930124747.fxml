@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns:fx="http://javafx.com/fxml"
+      style="-fx-background-color: #f5f7fa;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Welcome Section -->
+    <HBox alignment="CENTER_LEFT">
+        <VBox>
+            <Label fx:id="welcomeLabel"
+                   text="Welcome Admin!"
+                   style="-fx-font-size: 24px; -fx-text-fill: #333; -fx-font-weight: bold;" />
+            <Label text="Here's what's happening with your school today."
+                   style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+        </VBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label text="Monday, May 16, 2023"
+               style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+    </HBox>
+
+    <!-- Example Stats Overview Cards -->
+    <GridPane hgap="15" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="25"/>
+        </columnConstraints>
+
+        <!-- Students Card -->
+        <VBox GridPane.columnIndex="0" spacing="5"
+              style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(33,147,176,0.2)"/>
+                <Label text="1,254"
+                       style="-fx-font-size: 24px; -fx-text-fill: #2193b0; -fx-font-weight: bold;" />
+            </HBox>
+            <Label text="Total Students" style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+        </VBox>
+
+        <!-- Teachers Card -->
+        <VBox GridPane.columnIndex="1" spacing="5"
+              style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(76,175,80,0.2)"/>
+                <Label text="64"
+                       style="-fx-font-size: 24px; -fx-text-fill: #4CAF50; -fx-font-weight: bold;" />
+            </HBox>
+            <Label text="Total Teachers" style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+        </VBox>
+
+        <!-- Classes Card -->
+        <VBox GridPane.columnIndex="2" spacing="5"
+              style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(255,152,0,0.2)"/>
+                <Label text="42"
+                       style="-fx-font-size: 24px; -fx-text-fill: #FF9800; -fx-font-weight: bold;" />
+            </HBox>
+            <Label text="Active Classes" style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+        </VBox>
+
+        <!-- Attendance Card -->
+        <VBox GridPane.columnIndex="3" spacing="5"
+              style="-fx-background-color: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 0);">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Rectangle width="40" height="40" arcWidth="20" arcHeight="20" fill="rgba(156,39,176,0.2)"/>
+                <Label text="94%"
+                       style="-fx-font-size: 24px; -fx-text-fill: #9C27B0; -fx-font-weight: bold;" />
+            </HBox>
+            <Label text="Today's Attendance" style="-fx-text-fill: #666; -fx-font-size: 14px;" />
+        </VBox>
+    </GridPane>
+
+</VBox>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox spacing="20" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.juru.TimetableController"
+      style="-fx-padding: 25; -fx-background-color: #f8f9fa;">
+
+
+    <!-- Selection Panel -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="Select Academic Details" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Department" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <ComboBox fx:id="ttDepartmentCombo" promptText="Choose Department" style="-fx-pref-width: 200; -fx-pref-height: 35;" />
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Course" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <ComboBox fx:id="ttCourseCombo" promptText="Choose Course" style="-fx-pref-width: 200; -fx-pref-height: 35;" />
+            </VBox>
+            <VBox spacing="5">
+                <Label text="Semester" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <ComboBox fx:id="ttSemesterCombo" promptText="Choose Semester" style="-fx-pref-width: 200; -fx-pref-height: 35;" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox spacing="10" style="-fx-padding: 15 0 0 0;">
+                <Button text="Load Subjects" fx:id="loadSubjectsBtn"
+                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 120;" />
+                <Button text="Open Timetable" fx:id="openTimetableBtn" onAction="#openTimetable"
+                        style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 120;" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Main Content Area -->
+    <HBox spacing="20" alignment="TOP_LEFT">
+        <!-- Subjects Panel -->
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-pref-width: 280;">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="📚 Available Subjects" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="subjectCountLabel" text="0 subjects" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+            </HBox>
+            
+            <Label text="Drag and drop subjects to timetable slots" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-wrap-text: true;" />
+            
+            <ListView fx:id="subjectsListView" style="-fx-pref-height: 400; -fx-border-color: #e9ecef; -fx-border-radius: 4;" />
+        </VBox>
+
+        <!-- Timetable Grid Section -->
+        <VBox spacing="15" style="-fx-pref-width: 1; -fx-vgrow: ALWAYS;">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="🗓️ Weekly Timetable (Monday - Friday)" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Clear All" onAction="#clearTimetable"
+                        style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+                <Button text="Generate Auto" onAction="#generateAutoTimetable"
+                        style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 15;" />
+            </HBox>
+
+            <!-- Timetable Grid Container -->
+            <VBox style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 8, 0, 0, 2);">
+                
+                <!-- Timetable Grid Structure -->
+                <GridPane fx:id="timetableGrid" hgap="1" vgap="1" style="-fx-border-color: #dee2e6; -fx-border-width: 1; -fx-background-color: #dee2e6;">
+                    <!-- Column Constraints - 7 periods + 1 day column -->
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" prefWidth="120" maxWidth="150" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                        <ColumnConstraints minWidth="80" prefWidth="100" maxWidth="120" />
+                    </columnConstraints>
+                    
+                    <!-- Row Constraints - 5 days + 1 header row -->
+                    <rowConstraints>
+                        <RowConstraints minHeight="40" prefHeight="50" maxHeight="60" />
+                        <RowConstraints minHeight="60" prefHeight="80" maxHeight="100" />
+                        <RowConstraints minHeight="60" prefHeight="80" maxHeight="100" />
+                        <RowConstraints minHeight="60" prefHeight="80" maxHeight="100" />
+                        <RowConstraints minHeight="60" prefHeight="80" maxHeight="100" />
+                        <RowConstraints minHeight="60" prefHeight="80" maxHeight="100" />
+                    </rowConstraints>
+
+                    <!-- Header Row - Period Numbers -->
+                    <Label text="Days / Periods" GridPane.columnIndex="0" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #495057; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="2" GridPane.columnIndex="2" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="3" GridPane.columnIndex="3" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="4" GridPane.columnIndex="4" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="5" GridPane.columnIndex="5" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="6" GridPane.columnIndex="6" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="7" GridPane.columnIndex="7" GridPane.rowIndex="0" 
+                           style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+
+                    <!-- Day Rows - Vertical Days -->
+                    <Label text="Monday" GridPane.columnIndex="0" GridPane.rowIndex="1" 
+                           style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="Tuesday" GridPane.columnIndex="0" GridPane.rowIndex="2" 
+                           style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="Wednesday" GridPane.columnIndex="0" GridPane.rowIndex="3" 
+                           style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="Thursday" GridPane.columnIndex="0" GridPane.rowIndex="4" 
+                           style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+                    <Label text="Friday" GridPane.columnIndex="0" GridPane.rowIndex="5" 
+                           style="-fx-background-color: #e9ecef; -fx-text-fill: #495057; -fx-font-weight: bold; -fx-alignment: center; -fx-padding: 10; -fx-border-color: #dee2e6; -fx-border-width: 1;" />
+
+                    <!-- Empty Timetable Slots - Monday -->
+                    <Pane fx:id="slot_mon_1" GridPane.columnIndex="1" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_2" GridPane.columnIndex="2" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_3" GridPane.columnIndex="3" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_4" GridPane.columnIndex="4" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_5" GridPane.columnIndex="5" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_6" GridPane.columnIndex="6" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_mon_7" GridPane.columnIndex="7" GridPane.rowIndex="1" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+
+                    <!-- Tuesday Slots -->
+                    <Pane fx:id="slot_tue_1" GridPane.columnIndex="1" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_2" GridPane.columnIndex="2" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_3" GridPane.columnIndex="3" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_4" GridPane.columnIndex="4" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_5" GridPane.columnIndex="5" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_6" GridPane.columnIndex="6" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_tue_7" GridPane.columnIndex="7" GridPane.rowIndex="2" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+
+                    <!-- Wednesday Slots -->
+                    <Pane fx:id="slot_wed_1" GridPane.columnIndex="1" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_2" GridPane.columnIndex="2" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_3" GridPane.columnIndex="3" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_4" GridPane.columnIndex="4" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_5" GridPane.columnIndex="5" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_6" GridPane.columnIndex="6" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_wed_7" GridPane.columnIndex="7" GridPane.rowIndex="3" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+
+                    <!-- Thursday Slots -->
+                    <Pane fx:id="slot_thu_1" GridPane.columnIndex="1" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_2" GridPane.columnIndex="2" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_3" GridPane.columnIndex="3" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_4" GridPane.columnIndex="4" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_5" GridPane.columnIndex="5" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_6" GridPane.columnIndex="6" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_thu_7" GridPane.columnIndex="7" GridPane.rowIndex="4" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+
+                    <!-- Friday Slots -->
+                    <Pane fx:id="slot_fri_1" GridPane.columnIndex="1" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_2" GridPane.columnIndex="2" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_3" GridPane.columnIndex="3" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_4" GridPane.columnIndex="4" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_5" GridPane.columnIndex="5" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_6" GridPane.columnIndex="6" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                    <Pane fx:id="slot_fri_7" GridPane.columnIndex="7" GridPane.rowIndex="5" 
+                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                </GridPane>
+                
+                <!-- Timetable Legend -->
+                <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
+                    <Label text="Legend:" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="15" height="15" fill="#e3f2fd" stroke="#bbdefb" />
+                        <Label text="Lecture" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="15" height="15" fill="#e8f5e8" stroke="#c8e6c9" />
+                        <Label text="Lab" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="15" height="15" fill="#fff3e0" stroke="#ffcc80" />
+                        <Label text="Tutorial" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                </HBox>
+            </VBox>
+        </VBox>
+    </HBox>
+
+    <!-- Action Buttons -->
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="ttStatusLabel" text="✅ Ready to create timetable" style="-fx-text-fill: #28a745; -fx-font-weight: bold; -fx-font-size: 13px;" />
+        <Button text="Reset" onAction="#resetTimetable"
+                style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 100;" />
+        <Button text="Save Timetable" fx:id="saveTimetableBtn" onAction="#saveTimetable"
+                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 120;" />
+    </HBox>
+</VBox>
