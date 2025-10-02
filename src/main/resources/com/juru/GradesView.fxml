@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.juru.GradesViewController"
+      style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Your Grades" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #343a40;" />
+    </HBox>
+
+    <!-- TableView for Grades -->
+    <TableView fx:id="gradesTable" prefHeight="400" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10;">
+        <columns>
+            <TableColumn fx:id="subjectColumn" text="Subject" prefWidth="200"/>
+            <TableColumn fx:id="assignmentColumn" text="Assignment / Exam" prefWidth="200"/>
+            <TableColumn fx:id="marksColumn" text="Marks Obtained" prefWidth="150"/>
+            <TableColumn fx:id="maxMarksColumn" text="Max Marks" prefWidth="150"/>
+            <TableColumn fx:id="gradeColumn" text="Grade" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>

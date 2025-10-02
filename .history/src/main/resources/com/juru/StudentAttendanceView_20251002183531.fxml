@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.juru.StudentAttendanceController"
+      spacing="20" style="-fx-padding: 25; -fx-background-color: #f8f9fa;">
+
+    <!-- Header Section -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="📊 My Attendance Dashboard" 
+               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #343a40;" />
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label fx:id="studentNameLabel" text="Welcome, Student" 
+                       style="-fx-font-size: 16px; -fx-text-fill: #495057; -fx-font-weight: bold;" />
+                <Label fx:id="studentIdLabel" text="ID: --" 
+                       style="-fx-font-size: 14px; -fx-text-fill: #6c757d;" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox spacing="5" alignment="CENTER_RIGHT">
+                <Label text="Overall Attendance" style="-fx-text-fill: #6c757d; -fx-font-size: 14px;" />
+                <Label fx:id="overallAttendanceLabel" text="0%" 
+                       style="-fx-font-size: 24px; -fx-text-fill: #28a745; -fx-font-weight: bold;" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Quick Stats Cards -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-pref-width: 200;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane style="-fx-background-color: #e3f2fd; -fx-background-radius: 8;" >
+                    <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                    <Label text="📚" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label fx:id="totalSubjectsLabel" text="0" style="-fx-font-size: 20px; -fx-text-fill: #1976d2; -fx-font-weight: bold;" />
+                    <Label text="Subjects" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-pref-width: 200;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane style="-fx-background-color: #e8f5e8; -fx-background-radius: 8;" >
+                    <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                    <Label text="✅" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label fx:id="attendedClassesLabel" text="0" style="-fx-font-size: 20px; -fx-text-fill: #2e7d32; -fx-font-weight: bold;" />
+                    <Label text="Classes Attended" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-pref-width: 200;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane style="-fx-background-color: #ffebee; -fx-background-radius: 8;" >
+                    <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                    <Label text="❌" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label fx:id="missedClassesLabel" text="0" style="-fx-font-size: 20px; -fx-text-fill: #c62828; -fx-font-weight: bold;" />
+                    <Label text="Classes Missed" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-pref-width: 200;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <StackPane style="-fx-background-color: #fff3e0; -fx-background-radius: 8;" >
+                    <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                    <Label text="📅" style="-fx-font-size: 16px;" />
+                </StackPane>
+                <VBox spacing="2">
+                    <Label fx:id="totalClassesLabel" text="0" style="-fx-font-size: 20px; -fx-text-fill: #ef6c00; -fx-font-weight: bold;" />
+                    <Label text="Total Classes" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Semester and Month Selection -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="Select Semester &am Month" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+        
+        <GridPane hgap="15" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+            </columnConstraints>
+            
+            <Label text="Semester *" GridPane.columnIndex="0" GridPane.rowIndex="0" 
+                   style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+            <Label text="Month *" GridPane.columnIndex="1" GridPane.rowIndex="0" 
+                   style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+            <Label text="Year *" GridPane.columnIndex="2" GridPane.rowIndex="0" 
+                   style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+            
+            <ComboBox fx:id="semesterComboBox" promptText="Select Semester" 
+                     GridPane.columnIndex="0" GridPane.rowIndex="1" 
+                     style="-fx-pref-width: 200; -fx-pref-height: 35;" />
+            <ComboBox fx:id="monthComboBox" promptText="Select Month" 
+                     GridPane.columnIndex="1" GridPane.rowIndex="1" 
+                     style="-fx-pref-width: 150; -fx-pref-height: 35;" />
+            <ComboBox fx:id="yearComboBox" promptText="Select Year" 
+                     GridPane.columnIndex="2" GridPane.rowIndex="1" 
+                     style="-fx-pref-width: 120; -fx-pref-height: 35;" />
+            <Button text="Load Attendance" fx:id="applyFilterBtn" 
+                    GridPane.columnIndex="3" GridPane.rowIndex="1"
+                    style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 140;" />
+        </GridPane>
+    </VBox>
+
+    <!-- Tabs for Sections -->
+    <TabPane fx:id="attendanceTabPane" tabClosingPolicy="UNAVAILABLE" 
+             style="-fx-background-color: transparent; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        
+        <!-- Monthly Calendar View Tab -->
+        <Tab text="📅 Monthly Calendar View">
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+                <Label fx:id="monthYearLabel" text="Monthly Attendance - [Month Year]" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+                
+                <!-- Calendar Header -->
+                <HBox spacing="1" style="-fx-background-color: #495057; -fx-padding: 12; -fx-background-radius: 4;">
+                    <Label text="Period/Day" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                    <Label text="Monday" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                    <Label text="Tuesday" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                    <Label text="Wednesday" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                    <Label text="Thursday" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                    <Label text="Friday" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100; -fx-alignment: CENTER;" />
+                </HBox>
+
+                <!-- Scrollable Monthly Grid -->
+                <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" hbarPolicy="AS_NEEDED" 
+                           style="-fx-background-color: transparent; -fx-max-height: 600;">
+                    <VBox spacing="0">
+                        <!-- Grid will be dynamically populated with 7 periods and all dates of the month -->
+                        <GridPane fx:id="monthlyGrid" hgap="1" vgap="1" 
+                                 style="-fx-background-color: #dee2e6; -fx-border-color: #dee2e6; -fx-border-width: 1;">
+                            <!-- 
+                                Grid Structure:
+                                Column 0: Period numbers (1-7)
+                                Columns 1-5: Monday to Friday
+                                Rows: Days of the month (28-31 depending on month)
+                            -->
+                        </GridPane>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- Legend -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
+                    <Label text="Legend:" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="20" height="20" fill="#4caf50" stroke="#388e3c" />
+                        <Label text="Present" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="20" height="20" fill="#f44336" stroke="#d32f2f" />
+                        <Label text="Absent" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="20" height="20" fill="#9e9e9e" stroke="#757575" />
+                        <Label text="Not Marked" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="20" height="20" fill="#ffffff" stroke="#bdbdbd" />
+                        <Label text="No Class" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                    <HBox spacing="5" alignment="CENTER_LEFT">
+                        <Rectangle width="20" height="20" fill="#bbdefb" stroke="#64b5f6" />
+                        <Label text="Weekend" style="-fx-text-fill: #495057; -fx-font-size: 12px;" />
+                    </HBox>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Subject-wise Attendance Tab -->
+        <Tab text="📚 Subject-wise Report">
+            <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+                <Label text="Subject-wise Attendance Summary" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+
+                <TableView fx:id="attendanceTable" style="-fx-pref-height: 400;">
+                    <columns>
+                        <TableColumn text="Subject Code" fx:id="colSubjectCode" prefWidth="120" style="-fx-alignment: CENTER;" />
+                        <TableColumn text="Subject Name" fx:id="colSubjectName" prefWidth="250" />
+                        <TableColumn text="Total Classes" fx:id="colTotal" prefWidth="100" style="-fx-alignment: CENTER;" />
+                        <TableColumn text="Attended" fx:id="colAttended" prefWidth="100" style="-fx-alignment: CENTER;" />
+                        <TableColumn text="Percentage" fx:id="colPercentage" prefWidth="120" style="-fx-alignment: CENTER;" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Status Bar -->
+    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" text="✅ Select semester and month to view attendance" 
+               style="-fx-text-fill: #28a745; -fx-font-weight: bold; -fx-font-size: 13px;" />
+        <Button text="🔄 Refresh Data" fx:id="refreshDataBtn"
+                style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 5 10;" />
+    </HBox>
+</VBox>

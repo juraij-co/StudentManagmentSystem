@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.juru.StudentAttendanceController"
+      spacing="20" style="-fx-background-color: #f8f9fa;">
+
+    <!-- Header Section -->
+    <VBox spacing="10">
+        <Label text="📊 My Attendance"
+               style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #343a40;" />
+        <Label fx:id="studentNameLabel" text="Welcome, Student"
+               style="-fx-font-size: 14px; -fx-text-fill: #6c757d;" />
+    </VBox>
+
+    <!-- Tabs for Sections -->
+    <TabPane fx:id="attendanceTabPane" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: transparent;">
+        <!-- Monthly Attendance Tab -->
+        <Tab text="Monthly Attendance">
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+                <GridPane fx:id="monthlyGrid" hgap="20" vgap="20">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <!-- Monthly data will be added dynamically in controller -->
+                </GridPane>
+            </ScrollPane>
+        </Tab>
+
+        <!-- Subject-wise Attendance Tab -->
+        <Tab text="Subject-wise Attendance">
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="📚 Subject-wise Attendance"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+
+                <TableView fx:id="attendanceTable" prefHeight="400">
+                    <columns>
+                        <TableColumn text="Subject Code" fx:id="colSubjectCode" prefWidth="120"/>
+                        <TableColumn text="Subject Name" fx:id="colSubjectName" prefWidth="220"/>
+                        <TableColumn text="Total Classes" fx:id="colTotal" prefWidth="120"/>
+                        <TableColumn text="Attended" fx:id="colAttended" prefWidth="120"/>
+                        <TableColumn text="Percentage" fx:id="colPercentage" prefWidth="120"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Status Bar -->
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" text="✅ Data loaded"
+               style="-fx-text-fill: #28a745; -fx-font-weight: bold; -fx-font-size: 13px;" />
+    </HBox>
+</VBox>

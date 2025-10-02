@@ -123,7 +123,7 @@
 
                     <!-- Empty Timetable Slots - Monday -->
                     <Pane fx:id="slot_mon_1" GridPane.columnIndex="1" GridPane.rowIndex="1" 
-                          style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
+                          style="-fx-background-color: #ffffff; -fx-text-fill: #050505ff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
                     <Pane fx:id="slot_mon_2" GridPane.columnIndex="2" GridPane.rowIndex="1" 
                           style="-fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-cursor: hand;" />
                     <Pane fx:id="slot_mon_3" GridPane.columnIndex="3" GridPane.rowIndex="1" 

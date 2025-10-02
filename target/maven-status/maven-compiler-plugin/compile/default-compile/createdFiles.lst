@@ -20,7 +20,10 @@ com\juru\TeacherDAO.class
 com\juru\TeacherAttendanceController$1.class
 com\juru\TimetableController$2.class
 com\juru\LoginController.class
+com\juru\Grade.class
+com\juru\models\SubjectInfo.class
 com\juru\database\DBConnection.class
+com\juru\models\AttendanceRecord.class
 com\juru\TeachersController$1.class
 com\juru\ViewTeachersController.class
 com\juru\SceneLoader.class
@@ -39,10 +42,10 @@ com\juru\TimetableController.class
 com\juru\Teacher.class
 com\juru\DashboardController.class
 com\juru\ClassesViewController$4.class
-com\juru\StudentAttendanceController$AttendanceRecord.class
 com\juru\StudentsController.class
 com\juru\StudentController.class
 com\juru\TeacherFormController.class
+com\juru\GradesViewController.class
 com\juru\TimetableController$4.class
 com\juru\AddStudentFormController.class
 com\juru\TeacherAttendanceController$3.class

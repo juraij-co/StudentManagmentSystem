@@ -9,7 +9,11 @@ D:\juraij\Java Project\std\src\main\java\com\juru\DashboardController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\database\DBConnection.java
 D:\juraij\Java Project\std\src\main\java\com\juru\DBConnection.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Department.java
+D:\juraij\Java Project\std\src\main\java\com\juru\Grade.java
+D:\juraij\Java Project\std\src\main\java\com\juru\GradesViewController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\LoginController.java
+D:\juraij\Java Project\std\src\main\java\com\juru\models\AttendanceRecord.java
+D:\juraij\Java Project\std\src\main\java\com\juru\models\SubjectInfo.java
 D:\juraij\Java Project\std\src\main\java\com\juru\SceneLoader.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Semester.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Session.java
