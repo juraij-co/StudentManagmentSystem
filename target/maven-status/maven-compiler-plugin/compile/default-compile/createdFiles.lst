@@ -8,10 +8,13 @@ com\juru\TeachersController$TeacherRow.class
 com\juru\TeacherDashboardController.class
 com\juru\ClassesViewController$2.class
 com\juru\StudentsController$StudentRow.class
+com\juru\TeacherAttendanceController.class
+com\juru\Session.class
 com\juru\ClassesViewController.class
 com\juru\Subject.class
 com\juru\Semester.class
 com\juru\TeacherDAO.class
+com\juru\TeacherAttendanceController$1.class
 com\juru\TimetableController$2.class
 com\juru\LoginController.class
 com\juru\database\DBConnection.class
@@ -20,12 +23,14 @@ com\juru\ViewTeachersController.class
 com\juru\SceneLoader.class
 com\juru\TeachersController.class
 com\juru\AddTeacherController.class
+com\juru\StudentAttendance.class
 com\juru\DBConnection.class
 com\juru\ClassesViewController$3.class
 com\juru\TimetableController$3.class
 module-info.class
 com\juru\TimetableController$TimetableSlot.class
 com\juru\StudentsController$1.class
+com\juru\TeacherAttendanceController$2.class
 com\juru\TimetableController.class
 com\juru\Teacher.class
 com\juru\DashboardController.class
@@ -35,6 +40,7 @@ com\juru\StudentController.class
 com\juru\TeacherFormController.class
 com\juru\TimetableController$4.class
 com\juru\AddStudentFormController.class
+com\juru\TeacherAttendanceController$3.class
 com\juru\AddStudentController.class
 com\juru\ClassesViewController$1.class
 com\juru\App.class

@@ -28,7 +28,6 @@
                 <Button text="Dashboard" style="-fx-background-color: transparent; -fx-text-fill: #2193b0; -fx-font-weight: bold; -fx-underline: true;" />
                 <Button text="Attendance" onAction="#openViewAttendance" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
                 <Button text="Marks" onAction="#openViewMarks" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
-                <Button text="Students" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
                 <Button text="Timetable" style="-fx-background-color: transparent; -fx-text-fill: #555;" />
             </HBox>
             

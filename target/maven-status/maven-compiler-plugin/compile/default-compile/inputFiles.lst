@@ -12,12 +12,15 @@ D:\juraij\Java Project\std\src\main\java\com\juru\Department.java
 D:\juraij\Java Project\std\src\main\java\com\juru\LoginController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\SceneLoader.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Semester.java
+D:\juraij\Java Project\std\src\main\java\com\juru\Session.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Student.java
+D:\juraij\Java Project\std\src\main\java\com\juru\StudentAttendance.java
 D:\juraij\Java Project\std\src\main\java\com\juru\StudentController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\StudentDashboardController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\StudentsController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Subject.java
 D:\juraij\Java Project\std\src\main\java\com\juru\Teacher.java
+D:\juraij\Java Project\std\src\main\java\com\juru\TeacherAttendanceController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeacherDAO.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeacherDashboardController.java
 D:\juraij\Java Project\std\src\main\java\com\juru\TeacherFormController.java

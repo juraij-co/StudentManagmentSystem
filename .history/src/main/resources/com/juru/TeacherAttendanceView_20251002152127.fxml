@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.juru.TeacherAttendanceController"
+      spacing="20" style="-fx-padding: 25; -fx-background-color: #f8f9fa;">
+
+    <!-- Header Section -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="📊 Student Attendance Management" 
+               style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #343a40;" />
+        <Label fx:id="dateLabel" text="Select date and subject to begin" 
+               style="-fx-font-size: 14px; -fx-text-fill: #6c757d;" />
+    </VBox>
+
+    <!-- Selection Panel -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="Select Session Details" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+        
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <VBox spacing="5">
+                <Label text="Subject" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <ComboBox fx:id="subjectComboBox" promptText="Choose Subject" style="-fx-pref-width: 250; -fx-pref-height: 35;" />
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Period" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <ComboBox fx:id="periodComboBox" promptText="Select Period" style="-fx-pref-width: 150; -fx-pref-height: 35;" />
+            </VBox>
+            
+            <VBox spacing="5">
+                <Label text="Date" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+                <DatePicker fx:id="datePicker" style="-fx-pref-width: 150; -fx-pref-height: 35;" />
+            </VBox>
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <VBox spacing="5" style="-fx-padding: 15 0 0 0;">
+                <Button text="Load Students" 
+                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 120;" />
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Student Table Section -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <HBox alignment="CENTER_LEFT">
+            <Label text="👨‍🎓 Student Attendance List" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label text="Total Students: 0" style="-fx-text-fill: #6c757d; -fx-font-size: 12px;" />
+        </HBox>
+        
+        <TableView fx:id="attendanceTable" style="-fx-pref-height: 350; -fx-border-color: #e9ecef; -fx-border-radius: 4;">
+            <columns>
+                <TableColumn text="Student ID" fx:id="colStudentId" prefWidth="120" style="-fx-alignment: CENTER;" />
+                <TableColumn text="Student Name" fx:id="colName" prefWidth="250" />
+                <TableColumn text="Attendance Status" fx:id="colStatus" prefWidth="150" style="-fx-alignment: CENTER;" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+
+    <!-- Action Buttons & Status -->
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="statusLabel" text="✅ Ready to mark attendance" 
+               style="-fx-text-fill: #28a745; -fx-font-weight: bold; -fx-font-size: 13px;" />
+        <Button text="Save Attendance" onAction="#saveAttendance"
+                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-pref-height: 35; -fx-pref-width: 140;" />
+    </HBox>
+</VBox>
