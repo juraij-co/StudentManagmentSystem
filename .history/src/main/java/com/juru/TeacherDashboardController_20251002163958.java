@@ -1,0 +1,83 @@
+package com.juru;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+
+public class TeacherDashboardController {
+
+    @FXML
+    private BorderPane rootPane;
+    @FXML
+    private Label welcomeLabel;
+
+    @FXML
+    public void initialize() {
+        if (welcomeLabel != null) {
+            welcomeLabel.setText("Welcome, Teacher!");
+        }
+    }
+
+    @FXML
+    private void openMarkAttendance() throws Exception {
+        try {
+            rootPane.setCenter(FXMLLoader.load(getClass().getResource("/com/juru/mark-attendance.fxml")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load Mark Attendance view: " + ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void openViewAttendance() {
+        try {
+            // The resource previously referenced (/com/juru/view-attendance.fxml) does not
+            // exist.
+            // Use the teacher-specific attendance FXML that exists in resources.
+            rootPane.setCenter(FXMLLoader.load(getClass().getResource("/com/juru/TeacherAttendanceView.fxml")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load Attendance view: " + ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void openEnterMarks() throws Exception {
+        try {
+            rootPane.setCenter(FXMLLoader.load(getClass().getResource("/com/juru/TeacherMarksVie.fxml")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load Enter Marks view: " + ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void openViewMarks() throws Exception {
+        try {
+            rootPane.setCenter(FXMLLoader.load(getClass().getResource("/com/juru/view-marks.fxml")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to load View Marks view: " + ex.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void logout() throws Exception {
+        // Clear stored user info
+        Session.getInstance().logout();
+
+        // Load login screen
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/com/juru/login.fxml"))));
+        stage.centerOnScreen();
+    }
+
+}

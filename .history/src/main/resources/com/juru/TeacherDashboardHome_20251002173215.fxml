@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+
+    <!-- Header -->
+    <top>
+        <Label text="Teacher Dashboard Home"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- Center content -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" style="-fx-padding: 30;">
+            <Label text="Welcome, Teacher!"
+                   style="-fx-font-size: 18px; -fx-text-fill: #333;" />
+            <Label text="Use the left menu to navigate: 
+ - Mark Attendance 
+ - View Attendance 
+ - Enter Marks 
+ - View Marks 
+ - Timetable"
+                   wrapText="true"
+                   style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+        </VBox>
+    </center>
+
+    <!-- Footer -->
+    <bottom>
+        <Label text="© 2025 Your School - Teacher Portal"
+               style="-fx-font-size: 12px; -fx-text-fill: #888;"
+               BorderPane.alignment="CENTER" />
+    </bottom>
+
+</BorderPane>

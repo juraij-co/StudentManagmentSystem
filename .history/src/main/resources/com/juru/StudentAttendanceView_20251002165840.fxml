@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      
+      spacing="20" style="-fx-padding: 25; -fx-background-color: #f8f9fa;">
+
+    <!-- Header Section fx:controller="com.juru.StudentAttendanceController"-->
+    <VBox spacing="10">
+        <Label text="📊 My Attendance"
+               style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #343a40;" />
+        <Label fx:id="studentNameLabel" text="Welcome, Student"
+               style="-fx-font-size: 14px; -fx-text-fill: #6c757d;" />
+    </VBox>
+
+    <!-- Attendance Summary -->
+    <HBox spacing="25" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;" alignment="CENTER">
+        <VBox alignment="CENTER">
+            <Label text="Overall Attendance" style="-fx-font-size: 14px; -fx-text-fill: #495057;" />
+            <Label fx:id="overallAttendanceLabel" text="85%"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #007bff;" />
+        </VBox>
+
+        <VBox alignment="CENTER">
+            <Label text="Total Classes" style="-fx-font-size: 14px; -fx-text-fill: #495057;" />
+            <Label fx:id="totalClassesLabel" text="120"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #17a2b8;" />
+        </VBox>
+
+        <VBox alignment="CENTER">
+            <Label text="Attended" style="-fx-font-size: 14px; -fx-text-fill: #495057;" />
+            <Label fx:id="attendedClassesLabel" text="102"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #28a745;" />
+        </VBox>
+    </HBox>
+
+    <!-- Subject-wise Attendance Table -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Label text="📚 Subject-wise Attendance"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #495057;" />
+
+        <TableView fx:id="attendanceTable" prefHeight="400">
+            <columns>
+                <TableColumn text="Subject Code" fx:id="colSubjectCode" prefWidth="120"/>
+                <TableColumn text="Subject Name" fx:id="colSubjectName" prefWidth="220"/>
+                <TableColumn text="Total Classes" fx:id="colTotal" prefWidth="120"/>
+                <TableColumn text="Attended" fx:id="colAttended" prefWidth="120"/>
+                <TableColumn text="Percentage" fx:id="colPercentage" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Status Bar -->
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dee2e6; -fx-border-radius: 8;">
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" text="✅ Data loaded"
+               style="-fx-text-fill: #28a745; -fx-font-weight: bold; -fx-font-size: 13px;" />
+    </HBox>
+</VBox>

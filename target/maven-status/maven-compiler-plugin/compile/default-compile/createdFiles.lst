@@ -4,12 +4,15 @@ com\juru\Student.class
 com\juru\AdminDashboardController.class
 com\juru\Department.class
 com\juru\StudentDashboardController.class
+com\juru\StudentDashboardHomeController$1.class
+com\juru\StudentDashboardHomeController.class
 com\juru\TeachersController$TeacherRow.class
 com\juru\TeacherDashboardController.class
 com\juru\ClassesViewController$2.class
 com\juru\StudentsController$StudentRow.class
 com\juru\TeacherAttendanceController.class
 com\juru\Session.class
+com\juru\TeacherDashboardHomeController.class
 com\juru\ClassesViewController.class
 com\juru\Subject.class
 com\juru\Semester.class
@@ -24,6 +27,7 @@ com\juru\SceneLoader.class
 com\juru\TeachersController.class
 com\juru\AddTeacherController.class
 com\juru\StudentAttendance.class
+com\juru\StudentAttendanceController.class
 com\juru\DBConnection.class
 com\juru\ClassesViewController$3.class
 com\juru\TimetableController$3.class
@@ -35,6 +39,7 @@ com\juru\TimetableController.class
 com\juru\Teacher.class
 com\juru\DashboardController.class
 com\juru\ClassesViewController$4.class
+com\juru\StudentAttendanceController$AttendanceRecord.class
 com\juru\StudentsController.class
 com\juru\StudentController.class
 com\juru\TeacherFormController.class
