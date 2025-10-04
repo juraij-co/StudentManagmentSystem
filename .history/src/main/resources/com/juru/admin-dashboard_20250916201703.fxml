@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="rootPane"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.juru.AdminDashboardController"
+            style="-fx-background-color: #f5f7fa;">
+
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" prefHeight="70"
+              style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+            <padding>
+                <Insets top="0" right="20" bottom="0" left="20"/>
+            </padding>
+
+            <!-- App Logo/Title -->
+            <Label text="EduManage"
+                   style="-fx-text-fill: #2193b0; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <!-- Navigation Menu -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Button text="Dashboard"
+                        onAction="#openDashboard"
+                        style="-fx-background-color: transparent; -fx-text-fill: #2193b0; -fx-font-weight: bold; -fx-underline: true;" />
+                <Button text="Students"
+                        onAction="#openStudents"
+                        style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Teachers"
+                        onAction="#openTeachers"
+                        style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Classes"
+                        onAction="#openClasses"
+                        style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Attendance"
+                        onAction="#openAttendance"
+                        style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+                <Button text="Reports"
+                        onAction="#openReports"
+                        style="-fx-background-color: transparent; -fx-text-fill: #555;" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <!-- User Section -->
+            <HBox spacing="10" alignment="CENTER">
+                <Circle radius="20" fill="linear-gradient(to bottom right, #2193b0, #6dd5ed)" />
+                <Label text="Admin User" style="-fx-text-fill: #333; -fx-font-weight: bold;" />
+                <Button text="Logout"
+                        onAction="#logout"
+                        style="-fx-background-color: #f0f0f0; -fx-text-fill: #555; -fx-background-radius: 4;" />
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <!-- This will be swapped dynamically -->
+        <StackPane fx:id="contentArea" />
+    </center>
+</BorderPane>
