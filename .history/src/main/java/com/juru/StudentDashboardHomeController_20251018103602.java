@@ -34,7 +34,6 @@ public class StudentDashboardHomeController {
 
     @FXML
     public void initialize() {
-        // ✅ Fixed: Use Session.getInstance()
         int userId = Session.getInstance().getUserId();
 
         // Welcome label
@@ -133,10 +132,7 @@ public class StudentDashboardHomeController {
             try (PreparedStatement pst = conn.prepareStatement(courseSemSQL)) {
                 pst.setInt(1, userId);
                 ResultSet rs = pst.executeQuery();
-                if(rs.next()) { 
-                    courseId = rs.getInt("course_id"); 
-                    semesterId = rs.getInt("semester_id"); 
-                }
+                if(rs.next()) { courseId = rs.getInt("course_id"); semesterId = rs.getInt("semester_id"); }
             }
 
             String sql = """

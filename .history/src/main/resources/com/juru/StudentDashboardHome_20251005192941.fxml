@@ -2,6 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.Insets?>
 
 <VBox spacing="25" xmlns:fx="http://javafx.com/fxml"
@@ -68,13 +69,5 @@
         </VBox>
     </GridPane>
 
-    <!-- Timetable Section -->
-    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10,0,0,3); -fx-padding: 20;">
-        <Label text="📅 Weekly Timetable"
-               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" />
-
-        <GridPane fx:id="timetableGrid" hgap="10" vgap="10"
-                  style="-fx-background-color: #fafafa; -fx-border-color: #ddd; -fx-border-radius: 8; -fx-padding: 10;" />
-    </VBox>
-
+   
 </VBox>
