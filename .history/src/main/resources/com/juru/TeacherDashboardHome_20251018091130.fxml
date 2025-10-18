@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.juru.TeacherDashboardHomeController"
+            prefWidth="800" prefHeight="600">
+    <GridPane hgap="20" vgap="20" layoutX="50" layoutY="80" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="50">
+        <VBox spacing="10" style="-fx-background-color: #4e73df; -fx-padding: 20; -fx-background-radius: 10;">
+            <Label text="Upcoming Classes Today" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Label fx:id="classesCountLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: #1cc88a; -fx-padding: 20; -fx-background-radius: 10;">
+            <Label text="Total Students" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Label fx:id="studentsCountLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: #36b9cc; -fx-padding: 20; -fx-background-radius: 10;">
+            <Label text="Today's Attendance" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Label fx:id="attendancePercentLabel" text="0%" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <VBox spacing="10" style="-fx-background-color: #f6c23e; -fx-padding: 20; -fx-background-radius: 10;">
+            <Label text="Pending Marks" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Label fx:id="pendingMarksLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        </VBox>
+    </GridPane>
+
+    <Label fx:id="statusLabel" layoutX="50" layoutY="30" text="Loading..." style="-fx-font-size: 14px;"/>
+</AnchorPane>

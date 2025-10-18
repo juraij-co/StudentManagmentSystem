@@ -50,7 +50,7 @@ public class TeacherMarksController {
             Integer newMark = event.getNewValue();
             if (newMark == null || newMark < 0 || newMark > 100) {
                 statusLabel.setText("⚠ Invalid mark! Enter 0-100.");
-                marksTable.refresh();
+                marksTable.refresh(); // Revert invalid edit
             } else {
                 sm.setMarks(newMark);
                 updateAverage();
@@ -63,7 +63,7 @@ public class TeacherMarksController {
         // Load courses/semesters
         loadTeacherCoursesAndSemesters();
 
-        // On selection change
+        // On selection change, auto-load subjects and students
         courseComboBox.setOnAction(e -> loadSubjectsAndStudents());
         semesterComboBox.setOnAction(e -> loadSubjectsAndStudents());
         subjectComboBox.setOnAction(e -> {
@@ -77,9 +77,10 @@ public class TeacherMarksController {
     }
 
     private void loadTeacherCoursesAndSemesters() {
-        int teacherId = Session.getInstance().getTeacherId();
+        int teacherId = Session.getInstance().getUserId();
         try (Connection conn = DBConnection.getConnection()) {
 
+            // Courses
             PreparedStatement psCourse = conn.prepareStatement(
                     "SELECT DISTINCT c.id, c.name " +
                             "FROM teacher_subjects ts " +
@@ -96,6 +97,7 @@ public class TeacherMarksController {
             courseComboBox.setItems(courses);
             if (courses.size() == 1) courseComboBox.getSelectionModel().select(0);
 
+            // Semesters
             PreparedStatement psSem = conn.prepareStatement(
                     "SELECT DISTINCT sem.id, sem.name " +
                             "FROM teacher_subjects ts " +
@@ -111,6 +113,7 @@ public class TeacherMarksController {
             semesterComboBox.setItems(semesters);
             if (semesters.size() == 1) semesterComboBox.getSelectionModel().select(0);
 
+            // Auto-load subjects and students if selections exist
             loadSubjectsAndStudents();
 
         } catch (Exception ex) {
@@ -122,7 +125,9 @@ public class TeacherMarksController {
     private void loadSubjectsAndStudents() {
         if (courseComboBox.getValue() != null && semesterComboBox.getValue() != null) {
             loadSubjects();
-            if (subjectComboBox.getValue() != null) loadStudents();
+            if (subjectComboBox.getValue() != null) {
+                loadStudents();
+            }
         }
     }
 
@@ -132,7 +137,7 @@ public class TeacherMarksController {
         String semSel = semesterComboBox.getValue();
         if (courseSel == null || semSel == null) return;
 
-        int teacherId = Session.getInstance().getTeacherId();
+        int teacherId = Session.getInstance().getUserId();
         int courseId = Integer.parseInt(courseSel.split(" - ")[0]);
         int semId = Integer.parseInt(semSel.split(" - ")[0]);
 
@@ -146,8 +151,8 @@ public class TeacherMarksController {
             ps.setInt(1, teacherId);
             ps.setInt(2, courseId);
             ps.setInt(3, semId);
-            ResultSet rs = ps.executeQuery();
 
+            ResultSet rs = ps.executeQuery();
             ObservableList<String> subjects = FXCollections.observableArrayList();
             while (rs.next()) {
                 subjects.add(rs.getInt("id") + " - " + rs.getString("name"));
@@ -168,9 +173,10 @@ public class TeacherMarksController {
             return;
         }
         int subjectId = Integer.parseInt(subjSel.split(" - ")[0]);
-        int teacherId = Session.getInstance().getTeacherId();
 
         try (Connection conn = DBConnection.getConnection()) {
+
+            // Fetch students enrolled in subject
             PreparedStatement ps = conn.prepareStatement(
                     "SELECT st.id, st.name, COALESCE(im.marks, 0) AS marks " +
                             "FROM student_subject ss " +
@@ -178,6 +184,7 @@ public class TeacherMarksController {
                             "LEFT JOIN internal_marks im ON im.student_id = st.id AND im.subject_id = ? AND im.teacher_id = ? " +
                             "WHERE ss.subject_id = ?"
             );
+            int teacherId = Session.getInstance().getUserId();
             ps.setInt(1, subjectId);
             ps.setInt(2, teacherId);
             ps.setInt(3, subjectId);
@@ -233,7 +240,7 @@ public class TeacherMarksController {
         try (Connection conn = DBConnection.getConnection()) {
             String subjSel = subjectComboBox.getValue();
             int subjectId = Integer.parseInt(subjSel.split(" - ")[0]);
-            int teacherId = Session.getInstance().getTeacherId();
+            int teacherId = Session.getInstance().getUserId();
 
             String sql = "INSERT INTO internal_marks (student_id, subject_id, teacher_id, marks) " +
                     "VALUES (?, ?, ?, ?) " +

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.juru.AddStudentFormController"
+    spacing="20" style="-fx-padding: 25; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 8; -fx-background-radius: 8;">
+    
+    <!-- Header -->
+    <Label text="Add New Student" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 0 0 10 0;" />
+    
+    <!-- Form Container -->
+    <GridPane hgap="15" vgap="15" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-border-color: #e9ecef; -fx-border-radius: 8;">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="40" />
+            <ColumnConstraints percentWidth="60" />
+        </columnConstraints>
+        
+        <!-- Department (Step 1) -->
+        <Label text="1. Department*" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <ComboBox fx:id="studentDepartment" promptText="Select Department" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Course (Step 2) -->
+        <Label text="2. Course*" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <ComboBox fx:id="studentCourse" promptText="Select Course" GridPane.rowIndex="1" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Semester (Step 3) -->
+        <Label text="3. Semester*" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <ComboBox fx:id="studentSemester" promptText="Select Semester" GridPane.rowIndex="2" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Personal Information Section -->
+        <Label text="Personal Information" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-padding: 10 0 5 0; -fx-border-color: #e9ecef; -fx-border-width: 0 0 1 0;" />
+        
+        <!-- Full Name -->
+        <Label text="Full Name*" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <TextField fx:id="studentName" promptText="Enter full name" GridPane.rowIndex="4" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Email -->
+        <Label text="Email*" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <TextField fx:id="studentEmail" promptText="Enter email address" GridPane.rowIndex="5" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Username -->
+        <Label text="Username*" GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <TextField fx:id="studentUsername" promptText="Choose username" GridPane.rowIndex="6" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+        
+        <!-- Password -->
+        <Label text="Password*" GridPane.rowIndex="7" GridPane.columnIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #495057;" />
+        <PasswordField fx:id="studentPassword" promptText="Create password" GridPane.rowIndex="7" GridPane.columnIndex="1" style="-fx-pref-height: 35; -fx-background-radius: 4;" />
+    </GridPane>
+
+    <!-- Buttons -->
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Cancel" onAction="#cancel" style="-fx-background-color: #6c757d; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 35; -fx-pref-width: 100; -fx-background-radius: 4;" />
+        <Button text="Save Student" onAction="#saveStudent" style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-height: 35; -fx-pref-width: 120; -fx-background-radius: 4;" />
+    </HBox>
+    
+    <!-- Footer Note -->
+    <Label text="* Required fields" style="-fx-text-fill: #6c757d; -fx-font-size: 12px; -fx-font-style: italic;" />
+</VBox>
